@@ -6,8 +6,8 @@ Rails.application.routes.draw do
       get :logged_in, to: "sessions#logged_in"
 
       resources :users, only: [:create] do
-        resources :snippet_categories do
-          resources :snippets
+        resources :playlists do
+          resources :songs
         end
       end
     end

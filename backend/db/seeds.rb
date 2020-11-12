@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+p1 = Playlist.create!({ title: "Roadtrip Jams", owner: 1 })
+p2 = Playlist.create!({ title: "Shower Tunes", owner: 2 })
+p3 = Playlist.create!({ title: "Study Sesh", owner: 3 })
+
+s1 = Song.create!({ title: "Life is a Highway", artist: "Tom Cochrane", genre: "country rock", Playlist_id: 1 })
+s2 = Song.create!({ title: "Sweet Home Alabama", artist: "Lynyrd Skynyrd", genre: "classic rock", Playlist_id: 1 })
+s3 = Song.create!({ title: "Send Me On My Way", artist: "Rusted Root", genre: "folk rock", Playlist_id: 1 })
+s4 = Song.create!({ title: "American Girl", artist: "Tom Petty", genre: "rock", Playlist_id: 1 })
+s5 = Song.create!({ title: "Come On Eileen", artist: "Dexys Midnight Runners", genre: "new wave", Playlist_id: 2 })
+s6 = Song.create!({ title: "Feel It Still", artist: "Portugal. The Man", genre: "alt/indie", Playlist_id: 2 })
+s7 = Song.create!({ title: "Take A Chance On Me", artist: "ABBA", genre: "pop", Playlist_id: 2 })
+s8 = Song.create!({ title: "Save Tonight", artist: "Eagle-Eye Cherry", genre: "alt rock", Playlist_id: 2 })
+s9 = Song.create!({ title: "We've Been Here Our Whole Lives", artist: "Postcard Boy", genre: "alt", Playlist_id: 3 })
+s10 = Song.create!({ title: "I've Been Waiting", artist: "Uevo", genre: "lofi", Playlist_id: 3 })
+s11 = Song.create!({ title: "oceans", artist: "SpoonBeats", genre: "lofi", Playlist_id: 3 })
+s12 = Song.create!({ title: "Benadryl", artist: "Sofi Tukker", genre: "alt", Playlist_id: 3 })
+
+usr1 = User.create!({ first_name: "Annie", email: "AnnieTaylor@gmail.com", password_digest: "123" })
+usr2 = User.create!({ first_name: "Mona", email: "MonaKitty@gmail.com", password_digest: "456" })
+usr3 = User.create!({ first_name: "Ophelia", email: "o-o-phelia@gmail.com", password_digest: "789" })

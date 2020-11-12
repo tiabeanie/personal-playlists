@@ -11,4 +11,13 @@ class API::V1::SessionsController < ApplicationController
             render json: { status: 401 }
         end
     end
+
+    def logged_in
+        if @current_user 
+            json_response(object: @current_user, logged_in: true)
+        else 
+            render json:{ logged_in: false }
+        end
+    end
+
     

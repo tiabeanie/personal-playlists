@@ -411,20 +411,20 @@ class User {
     /* SAVING NEW CATEGORIES */
     /* -------------------------------------------------- */
   
-    renderSnippetBody(e, id) {
-      let snippetId
+    renderSongArtist(e, id) {
+      let songId
   
       if (e === "") {
-        snippetId = id
+        songId = id
       } else {
-        snippetId = e.target.parentNode.id.split('-')[1]
+        songId = e.target.parentNode.id.split('-')[1]
       }
   
-      const snippetCategoryId = appState["selectedCategory"]["categoryId"]
+      const playlistId = appState["selectedPlaylist"]["playlistId"]
       const editor = document.querySelector('.EditorColumn-editorArea')
   
-      this.snippetAdapter.getSnippetBody(snippetId, snippetCategoryId).then(snippetData => {
-        const body = snippetData.data.object.body
+      this.songAdapter.getSongArtist(snippetId, playlistId).then(songData => {
+        const body = songData.data.object.body
         editor.value = body
       })
     }

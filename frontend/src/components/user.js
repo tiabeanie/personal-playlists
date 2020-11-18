@@ -215,29 +215,42 @@ class User {
       const title = e.target.previousElementSibling.value
       const playlistId = appState["selectedPlaylist"]["playlistId"]
   
-      this.snippetAdapter.createSnippet(title, categoryId).then(snippetData => {
+      this.songAdapter.createSong(title, playlistId).then(songData => {
           const {
             id,
             title,
-            body,
-            snippet_category_id
-          } = snippetData.data.object
-          this.snippets.push(new Snippet(id, title, body, snippet_category_id))
+            artist,
+            genre,
+            playlist_id
+          } = songData.data.object
+          this.songs.push(new Song(id, title, artist, genre, playlist_id))
         })
         .catch(error => error.message)
   
       e.target.previousElementSibling.value = ""
     }
   
-    saveSnippetBody() {
+    saveSongArtist() {
       const editor = document.querySelector('.EditorColumn-editorArea')
-      const snippetContent = editor.value
+      const songContent = editor.value
       const userId = appState["currentUser"]["userId"]
-      const categoryId = appState["selectedCategory"]["categoryId"]
-      const snippetId = appState["selectedSnippet"]["snippetId"]
-      const snippetTitle = appState["selectedSnippet"]["snippetTitle"]
+      const playlistId = appState["selectedPlaylist"]["playlistId"]
+      const songId = appState["selectedSong"]["songId"]
+      const songTitle = appState["selectedSong"]["songTitle"]
   
-      this.snippetAdapter.saveSnippetContent(snippetTitle, snippetContent, categoryId, snippetId, userId).then(json => {
+      this.snippetAdapter.saveSnippetContent(songTitle, songContent, playlistId, songId, userId).then(json => {
+        json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
+      })
+
+    saveSongGenre() {
+      const editor = document.querySelector('.EditorColumn-editorArea')
+      const songContent = editor.value
+      const userId = appState["currentUser"]["userId"]
+      const playlistId = appState["selectedPlaylist"]["playlistId"]
+      const songId = appState["selectedSong"]["songId"]
+      const songTitle = appState["selectedSong"]["songTitle"]
+  
+      this.snippetAdapter.saveSnippetContent(songTitle, songContent, playlistId, songId, userId).then(json => {
         json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
       })
     }
@@ -250,8 +263,8 @@ class User {
     removeAllSelections(item, e) {
       let list
   
-      if (item === "Category") {
-        list = document.querySelector('.SnippetColumn-snippetList').childNodes
+      if (item === "Playlist") {
+        list = document.querySelector('.SongColumn-songList').childNodes
         // check for and remove associated snippet selection
         if (list.length > 0) {
           for (const item of list) {
@@ -261,57 +274,57 @@ class User {
           }
         }
   
-        list = document.querySelector('.CategoryColumn-categoryList').childNodes
+        list = document.querySelector('.PlaylistColumn-playlistList').childNodes
         // remove category selection
         for (const item of list) {
           if (item.className.includes('Selected')) {
             item.classList.remove('Selected')
           }
         }
-        // remove selected snippet object from appState
-        appState["selectedSnippet"] = {}
-        appState["selectedCategory"] = {}
+        // remove selected song object from appState
+        appState["selectedSong"] = {}
+        appState["selectedPlaylist"] = {}
       } else {
-        // find and remove the selected item in snippet list only
-        list = document.querySelector('.SnippetColumn-snippetList').childNodes
+        // find and remove the selected item in song list only
+        list = document.querySelector('.SongColumn-songList').childNodes
   
         for (const item of list) {
           if (item.className.includes('Selected')) {
             item.classList.remove('Selected')
           }
         }
-        // remove selectrd snippet object from appState
-        appState["selectedSnippet"] = {}
+        // remove selected song object from appState
+        appState["selectedSong"] = {}
       }
     }
   
-    toggleColumnDisplay(element = "snippetBook") {
-      const categoryColumn = document.querySelector('.CategoryColumn')
-      const snippetColumn = document.querySelector('.SnippetColumn')
+    toggleColumnDisplay(element = "songBook") {
+      const playlistColumn = document.querySelector('.PlaylistColumn')
+      const songColumn = document.querySelector('.SongColumn')
   
-      if (element === "snippetBook") {
+      if (element === "songBook") {
         this.clearEditor()
-        if (appState["isCategoryColumnVisible"] === true) {
-          categoryColumn.classList.toggle('Hide')
+        if (appState["isPlaylistColumnVisible"] === true) {
+          playlistColumn.classList.toggle('Hide')
   
           if (appState["isSnippetColumnVisible"] === true) {
-            snippetColumn.classList.toggle('Hide')
+            songColumn.classList.toggle('Hide')
             this.clearEditor()
           }
-          appState["isSnippetColumnVisible"] = false
-          appState["isCategoryColumnVisible"] = false
-          appState["selectedSnippet"] = {}
-          appState["selectedCategory"] = {}
-          this.removeAllSelections("Category")
+          appState["isSongColumnVisible"] = false
+          appState["isPlaylistColumnVisible"] = false
+          appState["selectedSong"] = {}
+          appState["selectedPlaylist"] = {}
+          this.removeAllSelections("Playlist")
         } else {
-          categoryColumn.classList.toggle('Hide')
-          appState["isCategoryColumnVisible"] = true
+          playlistColumn.classList.toggle('Hide')
+          appState["isPlaylistColumnVisible"] = true
         }
       }
   
-      if (element === "category" && appState["isSnippetColumnVisible"] === false) {
-        snippetColumn.classList.remove('Hide')
-        appState["isSnippetColumnVisible"] = true
+      if (element === "playlist" && appState["isSongColumnVisible"] === false) {
+        songColumn.classList.remove('Hide')
+        appState["isSongColumnVisible"] = true
       }
     }
   

@@ -336,18 +336,18 @@ class User {
       const fn = this.setInputStatus
   
       // assign values for selection checker
-      if (item === "category") {
+      if (item === "playlist") {
         element = document.getElementById(`sc-${id}`)
-        obj = "selectedCategory"
-        keyId = "categoryId"
-        keyName = "categoryTitle";
-        list = document.querySelector('.CategoryColumn-categoryList')
-      } else if (item === "snippet") {
+        obj = "selectedPlaylist"
+        keyId = "playlistId"
+        keyName = "playlistTitle";
+        list = document.querySelector('.PlaylistColumn-playlistList')
+      } else if (item === "song") {
         element = document.getElementById(`s-${id}`)
-        obj = "selectedSnippet"
-        keyId = "snippetId"
-        keyName = "snippetTitle";
-        list = document.querySelector('.SnippetColumn-snippetList')
+        obj = "selectedSong"
+        keyId = "songId"
+        keyName = "songTitle";
+        list = document.querySelector('.SongColumn-songList')
       }
   
       this.checkAndDisplaySelection(id, element, obj, keyId, keyName, list, fn, e)
@@ -384,8 +384,8 @@ class User {
     setInputStatus(keyName, status = "disabled") {
       let input
   
-      if (keyName === "categoryTitle") {
-        input = document.querySelector('.SnippetColumn-snippetInput')
+      if (keyName === "playlistTitle") {
+        input = document.querySelector('.SongColumn-songInput')
       } else {
         input = document.querySelector('.EditorColumn-editorArea')
       }

@@ -381,7 +381,7 @@ class User {
       console.log(appState)
     }
   
-    setInputStatus(keyName, status = "disabled") {
+    setInputStatus(keyName, status = "disabled") ;
       let input
   
       if (keyName === "playlistTitle") {

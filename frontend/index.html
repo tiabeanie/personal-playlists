@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/bcee8edc30.js" crossorigin="anonymous"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles/style.css" type="text/css">
+
+  <title>Personal Playlists</title>
+</head>
+
+<body>
+  <div class="Page">
+    <div class="Blackout"></div>
+    <div class="AccountButton Button Hide"><i class="fas fa-sign-out-alt fa-3x"></i></div>
+
+    <div class="Header">
+      <h1 class="Header-Text">Personal
+        <span class="Code">
+          <span class="Code-Bracket">{</span>
+          <span class="Code-First">C</span>
+          <span class="Code-Second">O</span>
+          <span class="Code-Third">D</span>
+          <span class="Code-Fourth">E</span>
+          <span class="Code-Bracket">}</span>
+        </span>Playlists</h1>
+    </div>
+
+    <div class="Container">
+      <div class="Info">
+
+        <ul class="Info-list">
+        <li class="Info-listItem">Organize your tunes to fit your mood</li>
+        <li class="Info-listItem">Create a playlist that has ALL your faves </li>
+        <li class="Info-listItem">Make mixes for your friends</li>
+      </ul>
+
+        <div class="ButtonBox">
+          <button type="button" class="ButtonBox-signUpButton ModalTrigger Button Primary">Sign Up</button>
+          <button type="button" class="ButtonBox-loginButton ModalTrigger Button Primary">Log In</button>
+        </div>
+
+        <div class="FormModal">
+          <i class="far fa-times-circle FormModal-close"></i>
+          <form class="Form">
+            <div class="Form-row Form-name">
+              <label for="firstName">First Name</label>
+              <input class="Form-input" type="text" name="firstName" required>
+            </div>
+            <div class="Form-row Form-email">
+              <label for="email">Email</label>
+              <input class="Form-input" type="email" name="email" required>
+            </div>
+            <div class="Form-row Form-password">
+              <label for="password">Password</label>
+              <input class="Form-input" type="password" name="password" autocomplete="on" required>
+            </div>
+            <div class="Form-row Form-confirmation">
+              <label for="password_confirmation">Repeat Password</label>
+              <input class="Form-input" type="password" name="passwordConfirmation" autocomplete="on" required>
+            </div>
+            <div class="Form-row">
+              <button type="button" class="Form-submitButton Button Primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="src/components/app.js"></script>
+  <script src="src/components/playlist.js"></script>
+  <script src="src/components/user.js"></script>
+  <script src="src/components/song.js"></script>
+  <script src="src/adapters/playlistAdapter.js"></script>
+  <script src="src/adapters/songAdapter.js"></script>
+  <script src="src/index.js"></script>
+
+</body>
+
+</html>

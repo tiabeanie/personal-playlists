@@ -23,7 +23,7 @@ class SongAdapter {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify(Data)
+        artist: JSON.stringify(Data)
       }
   
       return fetch(`${app.baseUrl}users/${this.userId}/_playlists/${playlist_id}/s`, configObject)
@@ -45,7 +45,7 @@ class SongAdapter {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify(data)
+        artist: JSON.stringify(data)
       }
   
       return fetch(`${app.baseUrl}users/${userId}/_playlists/${playlistId}/s/${Id}`, configObject)

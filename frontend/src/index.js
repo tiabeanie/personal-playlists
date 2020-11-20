@@ -113,7 +113,7 @@ const buildConfigObject = (formData) => {
       "Content-Type": "application/json",
       "Accept": "application/json",
     },
-    body: JSON.stringify(formData)
+    artist: JSON.stringify(formData)
   }
 
   return configObject

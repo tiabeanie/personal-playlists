@@ -27,7 +27,7 @@ class User {
             <i class="fas fa-book fa-3x Sidebar-book Button"></i>
           </div>
           <div class="PlaylistColumn Column Hide">
-            <div class="CategoryColumn-columnHeader ColumnHeader">
+            <div class="PlaylistColumn-columnHeader ColumnHeader">
               <input type="text" class="PlaylistColumn-playlistInput ColumnInput" placeholder="Add Playlist">
               <i class="far fa-plus-square fa-3x Add AddPlaylist Button"></i>
             </div>
@@ -274,7 +274,6 @@ class User {
         }
   
         list = document.querySelector('.PlaylistColumn-playlistList').childNodes
-        // remove category selection
         for (const item of list) {
           if (item.className.includes('Selected')) {
             item.classList.remove('Selected')
@@ -407,7 +406,7 @@ class User {
     }
   
     /* -------------------------------------------------- */
-    /* SAVING NEW CATEGORIES */
+    /* SAVING NEW PLAYLISTS */
     /* -------------------------------------------------- */
   
     renderSongArtist(e, id) {
@@ -423,8 +422,8 @@ class User {
       const editor = document.querySelector('.EditorColumn-editorArea')
   
       this.songAdapter.getSongArtist(songId, playlistId).then(songData => {
-        const body = songData.data.object.body
-        editor.value = body
+        const artist = songData.data.object.artist
+        editor.value = artist
       })
     }
   

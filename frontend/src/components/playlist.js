@@ -52,7 +52,7 @@ class Playlist {
     /* -------------------------------------------------- */
   
     initAndBindEventListeners() {
-      const categoryList = document.querySelector('.PlaylistColumn-playlistList')
+      const playlistList = document.querySelector('.PlaylistColumn-playlistList')
       this.clearEditor()
   
     }

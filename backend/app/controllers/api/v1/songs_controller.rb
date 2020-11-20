@@ -9,7 +9,8 @@ class Api::V1::SongsController < ApplicationController
     def create
       @song = Song.create!(
         title: params[:title],
-        body: params[:body],
+        artist: params[:artist],
+        genre: params[:genre]
         playlist_id: params[:playlist_id],
       )
       if @song

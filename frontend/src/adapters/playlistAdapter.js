@@ -21,7 +21,7 @@ class PlaylistAdapter {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify(playlistData)
+        artist: JSON.stringify(playlistData)
       }
   
       return fetch(`${app.baseUrl}users/${this.userId}/playlists`, configObject)

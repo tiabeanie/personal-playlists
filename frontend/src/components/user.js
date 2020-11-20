@@ -238,7 +238,7 @@ class User {
       const songId = appState["selectedSong"]["songId"]
       const songTitle = appState["selectedSong"]["songTitle"]
   
-      this.snippetAdapter.saveSnippetContent(songTitle, songContent, playlistId, songId, userId).then(json => {
+      this.songAdapter.saveSongContent(songTitle, songContent, playlistId, songId, userId).then(json => {
         json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
       })
 
@@ -250,7 +250,7 @@ class User {
       const songId = appState["selectedSong"]["songId"]
       const songTitle = appState["selectedSong"]["songTitle"]
   
-      this.snippetAdapter.saveSnippetContent(songTitle, songContent, playlistId, songId, userId).then(json => {
+      this.songAdapter.saveSongContent(songTitle, songContent, playlistId, songId, userId).then(json => {
         json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
       })
     }
@@ -265,7 +265,6 @@ class User {
   
       if (item === "Playlist") {
         list = document.querySelector('.SongColumn-songList').childNodes
-        // check for and remove associated snippet selection
         if (list.length > 0) {
           for (const item of list) {
             if (item.className.includes('Selected')) {
@@ -307,7 +306,7 @@ class User {
         if (appState["isPlaylistColumnVisible"] === true) {
           playlistColumn.classList.toggle('Hide')
   
-          if (appState["isSnippetColumnVisible"] === true) {
+          if (appState["isSongColumnVisible"] === true) {
             songColumn.classList.toggle('Hide')
             this.clearEditor()
           }
@@ -423,7 +422,7 @@ class User {
       const playlistId = appState["selectedPlaylist"]["playlistId"]
       const editor = document.querySelector('.EditorColumn-editorArea')
   
-      this.songAdapter.getSongArtist(snippetId, playlistId).then(songData => {
+      this.songAdapter.getSongArtist(songId, playlistId).then(songData => {
         const body = songData.data.object.body
         editor.value = body
       })

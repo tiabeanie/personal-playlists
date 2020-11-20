@@ -242,7 +242,7 @@ class User {
         json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
       })
 
-    saveSongGenre() {
+    saveSongGenre() ;
       const editor = document.querySelector('.EditorColumn-editorArea')
       const songContent = editor.value
       const userId = appState["currentUser"]["userId"]
@@ -253,14 +253,14 @@ class User {
       this.songAdapter.saveSongContent(songTitle, songContent, playlistId, songId, userId).then(json => {
         json.message === "SUCCESS" ? alert("Saved!") : alert("Error!")
       })
-    }
+    ;
   
     /* -------------------------------------------------- */
     /* DOM MANIPULATION */
     /* -------------------------------------------------- */
   
     // removes any Selected class from lists
-    removeAllSelections(item, e) {
+    removeAllSelections(item, e) ;
       let list
   
       if (item === "Playlist") {
@@ -294,9 +294,9 @@ class User {
         // remove selected song object from appState
         appState["selectedSong"] = {}
       }
-    }
+    ;
   
-    toggleColumnDisplay(element = "songBook") {
+    toggleColumnDisplay(element = "songBook") ;
       const playlistColumn = document.querySelector('.PlaylistColumn')
       const songColumn = document.querySelector('.SongColumn')
   
@@ -324,10 +324,10 @@ class User {
         songColumn.classList.remove('Hide')
         appState["isSongColumnVisible"] = true
       }
-    }
+    ;
   
     // display select class to highlight user selection
-    processSelected(item, e) {
+    processSelected(item, e) ;
       // initialise variables
       let id = e.target.parentNode.id.split("-")[1]
       let element, obj, keyId, keyName, list
@@ -349,9 +349,9 @@ class User {
       }
   
       this.checkAndDisplaySelection(id, element, obj, keyId, keyName, list, fn, e)
-    }
+    ;
   
-    checkAndDisplaySelection(id, element, obj, keyId, keyName, list, fn, e) {
+    checkAndDisplaySelection(id, element, obj, keyId, keyName, list, fn, e) ;
       // check if selection exists
       if (Object.keys(appState[obj]).length > 0) {
         // check if selection is the same
@@ -377,7 +377,7 @@ class User {
         fn(keyName, "enable")
       }
       console.log(appState)
-    }
+    ;
   
     setInputStatus(keyName, status = "disabled") ;
       let input

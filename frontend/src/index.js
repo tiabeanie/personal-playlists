@@ -188,3 +188,5 @@ domElements.formSubmit.addEventListener('click', e => {
   enableUserAccess(flag, configObject)
   hideFormModal()
 })
+
+console.log("testing...")

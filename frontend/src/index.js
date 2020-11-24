@@ -43,6 +43,8 @@ const displayFormModal = () => {
       passwordConfirmationRow
     } = domElements
 
+   
+
     passwordConfirmationRow.parentNode.removeChild(passwordConfirmationRow)
     nameRow.parentNode.removeChild(nameRow)
   }
@@ -87,6 +89,7 @@ const resetPage = () => {
 /* -------------------------------------------------- */
 
 const buildFormData = (flag) => {
+  
   const {
     nameField,
     emailField,
@@ -113,14 +116,15 @@ const buildConfigObject = (formData) => {
       "Content-Type": "application/json",
       "Accept": "application/json",
     },
-    artist: JSON.stringify(formData)
+    user: JSON.stringify(formData)
   }
-
+  
   return configObject
 }
 
 const enableUserAccess = (flag, obj) => {
-  fetch(`${baseUrl}${flag}`, obj, {
+  debugger
+  fetch(`${baseUrl}/${flag}`, obj, {
       credentials: 'include'
     })
     .then(response => response.json())
@@ -168,6 +172,7 @@ domElements.authButtons.forEach(btn => {
     if (btn.className.includes("login")) {
       updateAppStateFlags("isLoginSelected")
     } else {
+      event.preventDefault()
       updateAppStateFlags("isSignupSelected")
     }
     displayFormModal()
